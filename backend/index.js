@@ -5,11 +5,15 @@ var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('./lib/logger');
+var cors = require('cors'); 
 
 var items = require('./routes/items');
 
 var app = express();
 var log = logger(app);
+
+// Enable CORS for all routes
+app.use(cors()); // This allows all origins by default
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
